@@ -28,4 +28,13 @@ rl.question('Choose a language: English, Spanish, Japanese, Icelandic: ', (answe
 	
 });
 
-greetingLog.readLog();
+rl.question('Would you like to see your greeting history? (y/n): ', (answer) => {
+
+	if (answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'y') {
+		greetingLog.logGreetings(answer);
+	} else {
+		console.log('good-bye!')
+		rl.close();
+	}
+	
+});
