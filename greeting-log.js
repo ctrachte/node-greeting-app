@@ -4,9 +4,7 @@ let date = new Date();
 let current_hour = date.getHours();
 
 exports.logGreetings = function (greeting) {
-	fs.appendFileSync('greeting-log.txt', `Your choice on ${date} ${current_hour}: ${greeting}
-
-		 `);
+	fs.appendFileSync('greeting-log.txt', ` Your choice on ${date} ${current_hour} was: '${greeting}',`);
 }
 
 exports.readLog = function () {
