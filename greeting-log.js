@@ -1,19 +1,17 @@
 const fs = require('fs');
 
+let date = new Date();
+let current_hour = date.getHours();
 
 exports.logGreetings = function (greeting) {
-	const stream = fs.createWriteStream("greeting-log.txt");
-	stream.once('open', function(fd) {
-	  stream.write(`Choice: ${greeting}
-	  	.`);
-	  stream.end();
-	});	
+	fs.appendFileSync('greeting-log.txt', `Your choice on ${date} ${current_hour}: ${greeting}
+
+		 `);
 }
 
 exports.readLog = function () {
-	fs.readFile('greeting-log.txt', (err, data) => {
-	  if (err) throw err;
-	  console.log(`Your greeting history:
-	   ${data}`);
+	fs.readFile("greeting-log.txt", "UTF8", function(err, data) {
+	    if (err) { throw err };
+	    console.log(data);
 	});
 }
