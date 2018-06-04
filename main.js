@@ -2,7 +2,7 @@ const greetings = require("./greeting.js");
 
 const readline = require('readline');
 
-
+const greetingLog = require('./greeting-log.js');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -22,6 +22,10 @@ rl.question('Choose a language: English, Spanish, Japanese, Icelandic: ', (answe
 	} else {
 		greetings.greetingEnglish();
 	}
+	greetingLog.logGreetings(answer);
 	 //close the input stream.
 	rl.close();
+	
 });
+
+greetingLog.readLog();
